@@ -99,15 +99,15 @@ export default function ExamApp() {
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body, #root { width: 100%; height: 100%; overflow: hidden; }
         @keyframes glow {
-          0%,100% { box-shadow: 0 0 10px rgba(109,41,50,0.5), inset 0 0 10px rgba(109,41,50,0.2); }
-          50%      { box-shadow: 0 0 22px rgba(86,28,36,0.8), inset 0 0 20px rgba(86,28,36,0.3); }
+          0%,100% { box-shadow: 0 0 10px rgba(10,29,78,0.5), inset 0 0 10px rgba(10,29,78,0.2); }
+          50%      { box-shadow: 0 0 22px rgba(10,29,78,0.8), inset 0 0 20px rgba(10,29,78,0.3); }
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes pulse {
           0%,100% { opacity: 1; }
           50%      { opacity: 0.5; }
         }
-        textarea::placeholder { color: rgba(255,245,233,0.65); }
+        textarea::placeholder { color: rgba(255,255,255,0.8); }
       `}</style>
 
       <div style={{ width: "100vw", height: "100vh", position: "relative", overflow: "hidden" }}>
@@ -115,7 +115,7 @@ export default function ExamApp() {
         {/* ── Background ── */}
         <div style={{
           position: "fixed", inset: 0, zIndex: -1,
-          background: "#E8D8C4",
+          background: "#FFFAF4",
         }}>
           <div style={{
             position: "absolute", bottom: 0, left: 0, width: "50%", height: "40%", opacity: 0.15,
@@ -133,9 +133,9 @@ export default function ExamApp() {
         <div style={{ position: "fixed", top: "2rem", right: "2rem", zIndex: 40 }}>
           <div style={{
             borderRadius: "9999px", padding: "0.75rem 1.75rem",
-            fontSize: "1.35rem", fontWeight: 700, color: "#E8D8C4",
-            background: "rgba(86,28,36,0.5)",
-            border: "1px solid rgba(232,216,196,0.4)",
+            fontSize: "1.35rem", fontWeight: 700, color: "#ffffff",
+            background: "rgba(10,29,78,0.85)",
+            border: "1px solid rgba(255,255,255,0.3)",
             animation: "glow 2s ease-in-out infinite",
             letterSpacing: "0.05em",
           }}>
@@ -153,7 +153,7 @@ export default function ExamApp() {
           }}>
 
             {/* Question number */}
-            <p style={{ color: "#561C24", fontSize: "1.3rem", fontWeight: 600, letterSpacing: "0.05em" }}>
+            <p style={{ color: "#0A1D4E", fontSize: "1.3rem", fontWeight: 600, letterSpacing: "0.05em" }}>
               Question {current} of {TOTAL}
             </p>
 
@@ -161,9 +161,9 @@ export default function ExamApp() {
             <div style={{
               width: "100%", maxWidth: "1050px",
               borderRadius: "1.25rem", padding: "2.8rem 3.5rem",
-              background: "rgba(86,28,36,0.88)",
+              background: "rgba(10,29,78,0.92)",
               backdropFilter: "blur(10px)",
-              border: "1px solid rgba(86,28,36,0.6)",
+              border: "1px solid rgba(10,29,78,0.6)",
             }}>
               <p style={{ color: "#ffffff", fontSize: "1.85rem", fontWeight: 500, lineHeight: 1.6 }}>
                 {QUESTIONS[current - 1]}
@@ -175,15 +175,15 @@ export default function ExamApp() {
               <div style={{
                 display: "flex", alignItems: "center", gap: "0.6rem",
                 padding: "0.5rem 1.2rem", borderRadius: "9999px",
-                background: "rgba(86,28,36,0.4)",
-                border: "1px solid rgba(199,183,163,0.35)",
+                background: "rgba(10,29,78,0.4)",
+                border: "1px solid rgba(255,255,255,0.3)",
               }}>
                 <div style={{
                   width: "10px", height: "10px", borderRadius: "50%",
-                  background: "#E8D8C4",
+                  background: "#FFFAF4",
                   animation: "pulse 1s ease-in-out infinite",
                 }} />
-                <span style={{ color: "#E8D8C4", fontSize: "1.1rem", fontWeight: 600 }}>
+                <span style={{ color: "#ffffff", fontSize: "1.1rem", fontWeight: 600 }}>
                   Dictation Mode Active — Speak your answer
                 </span>
               </div>
@@ -195,22 +195,22 @@ export default function ExamApp() {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               rows={5}
-              placeholder={isDictating ? "Listening... speak your answer" : "Press 1. Answer to start dictation"}
+              placeholder="Answer the question"
               readOnly={!isDictating}
               style={{
                 width: "100%", maxWidth: "1050px",
                 padding: "1.5rem 2rem",
-                color: "#FFF5E9", fontSize: "1.25rem",
-                background: isDictating ? "rgba(109,41,50,0.6)" : "rgba(109,41,50,0.35)",
+                color: "#FFFFFF", fontSize: "1.25rem",
+                background: isDictating ? "rgba(10,29,78,0.6)" : "rgba(10,29,78,0.3)",
                 backdropFilter: "blur(8px)",
                 border: isDictating
-                  ? "1px solid rgba(109,41,50,0.5)"
+                  ? "1px solid rgba(10,29,78,0.6)"
                   : "1px solid rgba(236,72,153,0.2)",
                 borderRadius: "0.875rem",
                 resize: "none", outline: "none",
                 transition: "all 0.3s ease",
                 fontFamily: "inherit",
-                boxShadow: isDictating ? "0 0 20px rgba(109,41,50,0.3)" : "none",
+                boxShadow: isDictating ? "0 0 20px rgba(10,29,78,0.4)" : "none",
                 cursor: isDictating ? "text" : "default",
               }}
             />
@@ -250,8 +250,8 @@ export default function ExamApp() {
                   padding: "1.2rem 3rem", borderRadius: "9999px",
                   border: "none", cursor: "pointer",
                   color: "#ffffff", fontSize: "1.2rem", fontWeight: 700,
-                  background: "linear-gradient(135deg, #561C24 0%, #6D2932 50%, #8B3A44 100%)",
-                  boxShadow: "0 0 24px rgba(86,28,36,0.7)",
+                  background: "linear-gradient(135deg, #061535 0%, #0A1D4E 50%, #1A3A7A 100%)",
+                  boxShadow: "0 0 24px rgba(10,29,78,0.7)",
                   transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
@@ -260,7 +260,7 @@ export default function ExamApp() {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 0 24px rgba(86,28,36,0.7)";
+                  e.currentTarget.style.boxShadow = "0 0 24px rgba(10,29,78,0.7)";
                 }}
               >
                 Submit Exam
@@ -278,8 +278,8 @@ export default function ExamApp() {
           }}>
             <div style={{
               width: "100px", height: "100px", borderRadius: "50%",
-              border: "4px solid rgba(86,28,36,0.3)",
-              borderTop: "4px solid #E8D8C4",
+              border: "4px solid rgba(10,29,78,0.2)",
+              borderTop: "4px solid #0A1D4E",
               animation: "spin 1s linear infinite",
             }} />
             <p style={{ color: "#ffffff", fontSize: "1.7rem", fontWeight: 500 }}>
@@ -297,7 +297,7 @@ export default function ExamApp() {
           }}>
             <p style={{
               fontSize: "3.5rem", fontWeight: 800,
-              color: "#561C24",
+              color: "#0A1D4E",
             }}>
               ✓ Exam Submitted Successfully
             </p>
@@ -306,9 +306,9 @@ export default function ExamApp() {
               style={{
                 padding: "1.2rem 5rem", borderRadius: "9999px",
                 border: "none", cursor: "pointer",
-                color: "#FFF5E9", fontSize: "1.25rem", fontWeight: 700,
-                background: "linear-gradient(135deg, #561C24 0%, #6D2932 50%, #8B3A44 100%)",
-                boxShadow: "0 0 24px rgba(86,28,36,0.7)",
+                color: "#FFFFFF", fontSize: "1.25rem", fontWeight: 700,
+                background: "linear-gradient(135deg, #061535 0%, #0A1D4E 50%, #1A3A7A 100%)",
+                boxShadow: "0 0 24px rgba(10,29,78,0.7)",
                 transition: "transform 0.2s ease",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.06)")}
@@ -340,13 +340,13 @@ function IvrBtn({ children, onClick, active = false, disabled = false }: IvrBtnP
         padding: "1rem 2.4rem",
         borderRadius: "9999px",
         fontSize: "1.15rem", fontWeight: 600,
-        color: active ? "#E8D8C4" : "#561C24",
+        color: active ? "#ffffff" : "#0A1D4E",
         cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.4 : 1,
         transition: "transform 0.2s ease, box-shadow 0.2s ease",
-        border: active ? "none" : "1px solid rgba(86,28,36,0.35)",
+        border: active ? "none" : "1px solid rgba(10,29,78,0.45)",
         background: active
-          ? "linear-gradient(135deg, #561C24 0%, #6D2932 50%, #8B3A44 100%)"
+          ? "linear-gradient(135deg, #061535 0%, #0A1D4E 50%, #1A3A7A 100%)"
           : "rgba(255,255,255,0.08)",
         boxShadow: active ? "0 0 18px rgba(236,72,153,0.5)" : "none",
       }}
